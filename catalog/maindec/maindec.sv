@@ -45,7 +45,7 @@ module maindec
             4'b0101: controls <= 11'b; // SW
             4'b1000: controls <= 11'b; // beg
             4'b1001: controls <= 11'b; // JUMP
-            default:   controls <= 9'bxxxxxxxxx; // illegal operation
+            default:   controls <= 11'bxxxxxxxxxxx; // illegal operation
         endcase
     end
 
