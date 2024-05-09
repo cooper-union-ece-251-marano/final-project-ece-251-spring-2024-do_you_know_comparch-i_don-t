@@ -30,7 +30,7 @@ module maindec
     //
     // ---------------- MODULE DESIGN IMPLEMENTATION ----------------
     //
-    logic [8:0] controls; // 9-bit control vector
+    logic [10:0] controls; // 9-bit control vector
 
     // controls has 9 logical signals
     assign {regwrite, regdst, alusrc, branch, memwrite,
@@ -38,12 +38,13 @@ module maindec
 
     always @* begin
         case(op)
-            6'b000000: controls <= 9'b110000010; // RTYPE
-            6'b100011: controls <= 9'b101001000; // LW
-            6'b101011: controls <= 9'b001010000; // SW
-            6'b000100: controls <= 9'b000100001; // BEQ
-            6'b001000: controls <= 9'b101000000; // ADDI
-            6'b000010: controls <= 9'b000000100; // J
+            4'b0000: controls <= 11'b; // RTYPE
+            4'b0001: controls <= 11'b; // ADDI
+            4'b0010: controls <= 11'b; // subi
+            4'b0100: controls <= 11'b; // LW
+            4'b0101: controls <= 11'b; // SW
+            4'b1000: controls <= 11'b; // beg
+            4'b1001: controls <= 11'b; // JUMP
             default:   controls <= 9'bxxxxxxxxx; // illegal operation
         endcase
     end
