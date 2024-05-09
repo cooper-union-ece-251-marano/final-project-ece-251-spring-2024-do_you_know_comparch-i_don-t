@@ -60,7 +60,7 @@ module datapath
     regfile     rf(clk, regwrite, instr[27:23], instr[22:18], writereg, result, srca, writedata);
     mux2 #(5)   wrmux(instr[22:18], instr[17:13], regdst, writereg);
     mux2 #(n)   resmux(aluout, readdata, memtoreg, result);//change
-    signext     se(instr[15:0], signimm);//
+    signext     se(instr[17:0], signimm);//
 
     // ALU logic
     mux2 #(n)   srcbmux(writedata, signimm, alusrc, srcb);

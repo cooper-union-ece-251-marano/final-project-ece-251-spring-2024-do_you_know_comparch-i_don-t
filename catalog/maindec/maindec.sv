@@ -38,13 +38,13 @@ module maindec
 
     always @* begin
         case(op)
-            4'b0000: controls <= 11'b; // RTYPE
-            4'b0001: controls <= 11'b; // ADDI
-            4'b0010: controls <= 11'b; // subi
-            4'b0100: controls <= 11'b; // LW
-            4'b0101: controls <= 11'b; // SW
-            4'b1000: controls <= 11'b; // beg
-            4'b1001: controls <= 11'b; // JUMP
+            4'b0000: controls <= 11'b11000000000; // RTYPE
+            4'b0001: controls <= 11'b10100000001; // ADDI
+            4'b0010: controls <= 11'b10100000001; // subi
+            4'b0100: controls <= 11'b10100100100; // LW
+            4'b0101: controls <= 11'b10101000101; // SW
+            4'b1000: controls <= 11'b00010001000; // beg
+            4'b1001: controls <= 11'b00000011001; // JUMP
             default:   controls <= 11'bxxxxxxxxxxx; // illegal operation
         endcase
     end
