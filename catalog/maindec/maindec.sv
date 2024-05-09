@@ -20,12 +20,12 @@ module maindec
     //
     // ---------------- PORT DEFINITIONS ----------------
     //
-    input  logic [5:0] op,
+    input  logic [3:0] op,
     output logic       memtoreg, memwrite,
     output logic       branch, alusrc,
     output logic       regdst, regwrite,
     output logic       jump,
-    output logic [1:0] aluop
+    output logic [3:0] aluop
 );
     //
     // ---------------- MODULE DESIGN IMPLEMENTATION ----------------

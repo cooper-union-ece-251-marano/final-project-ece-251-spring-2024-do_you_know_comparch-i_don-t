@@ -34,7 +34,7 @@ module controller
     //
     // ---------------- MODULE DESIGN IMPLEMENTATION ----------------
     //
-    logic [3:0] aluop = op;
+    logic [3:0] aluop;
     logic       branch;
     
     // CPU main decoder
