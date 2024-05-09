@@ -17,14 +17,18 @@
 
 module adder
     #(parameter n = 32)(
-    //
-    // ---------------- PORT DEFINITIONS ----------------
-    //
+    input logic [(n-1):0] pc
+    input logic [(n-1):0] branch
+    output logic [(n-1):0] adderresult
 
 );
     //
     // ---------------- MODULE DESIGN IMPLEMENTATION ----------------
     //
+
+always @* begin
+
+end
 
 endmodule
 
