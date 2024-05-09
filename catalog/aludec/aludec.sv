@@ -17,6 +17,12 @@
 
 module aludec
     #(parameter n = 32)(
+        input logic [3:0] funct,
+        input logic [3:0] aluop, 
+        output logic [3:0] alucontrol
+    ):
+    
+    
     //
     // ---------------- PORT DEFINITIONS ----------------
     //
@@ -24,7 +30,9 @@ module aludec
     //
     // ---------------- MODULE DESIGN IMPLEMENTATION ----------------
     //
-
+    always @* begin
+        
+    end
 endmodule
 
 `endif // ALUDEC
