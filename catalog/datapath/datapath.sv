@@ -54,12 +54,12 @@ module datapath
     sl2         immsh(signimm, signimmsh);
     adder       pcadd2(pcplus4, signimmsh, pcbranch);
     mux2 #(n)   pcbrmux(pcplus4, pcbranch, pcsrc, pcnextbr);
-    mux2 #(n)   pcmux(pcnextbr, {pcplus4[31:28], instr[25:0], 2'b00}, jump, pcnext);
+    mux2 #(n)   pcmux(pcnextbr, {pcplus4[31:28], instr[25:0], 2'b00}, jump, pcnext);//change
 
     // register file logic
-    regfile     rf(clk, regwrite, instr[25:21], instr[20:16], writereg, result, srca, writedata);
-    mux2 #(5)   wrmux(instr[20:16], instr[15:11], regdst, writereg);
-    mux2 #(n)   resmux(aluout, readdata, memtoreg, result);
+    regfile     rf(clk, regwrite, instr[27:23], instr[22:18], writereg, result, srca, writedata);
+    mux2 #(5)   wrmux(instr[22:18], instr[17:13], regdst, writereg);
+    mux2 #(n)   resmux(aluout, readdata, memtoreg, result);//change
     signext     se(instr[15:0], signimm);
 
     // ALU logic

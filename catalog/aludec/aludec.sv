@@ -31,7 +31,32 @@ module aludec
     // ---------------- MODULE DESIGN IMPLEMENTATION ----------------
     //
     always @* begin
-        
+        case (aluop)
+            4'b0001: begin
+                alucontrol <= 4'b0000;
+            end
+            4'b0010: begin
+                alucontrol <= 4'b0001;
+            end
+
+            4'b0100: begin
+                alucontrol <= 4'b0000;
+            end
+
+            4'b0101: begin
+                alucontrol <= 4'b0000;
+            end
+
+            4'b1000: begin
+                alucontrol <= 4'b0001;
+            end
+
+            4'b0000: begin
+                alucontrol <= funct;
+            end
+
+        endcase
+
     end
 endmodule
 
