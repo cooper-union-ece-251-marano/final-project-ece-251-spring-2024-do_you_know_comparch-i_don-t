@@ -33,7 +33,7 @@ module imem
     begin
       // read memory in hex format from file 
       // $readmemh("program_exe",RAM);
-      $readmemh("sample_exe",RAM);
+      $readmemh("add_exe",RAM);
     end
 
   assign readdata = RAM[addr]; // word aligned
