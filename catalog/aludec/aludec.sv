@@ -20,7 +20,7 @@ module aludec
         input logic [3:0] funct,
         input logic [3:0] aluop, 
         output logic [3:0] alucontrol
-    ):
+    );
     
     
     //
