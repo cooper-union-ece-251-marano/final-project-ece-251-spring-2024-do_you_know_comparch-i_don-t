@@ -17,9 +17,9 @@
 
 module adder
     #(parameter n = 32)(
-    input logic [(n-1):0] pc
-    input logic [(n-1):0] branch
-    output logic [(n-1):0] adderresult
+    input logic [(n-1):0] a
+    input logic [(n-1):0] b
+    output logic [(n-1):0] addrlt
 
 );
     //
@@ -27,6 +27,8 @@ module adder
     //
 
 always @* begin
+
+addrlt <= a + b
 
 end
 
