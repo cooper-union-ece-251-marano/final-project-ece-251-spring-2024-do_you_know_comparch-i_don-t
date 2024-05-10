@@ -64,10 +64,10 @@ always @* begin
         aluout <= srca | srcb;
         end
 
-        if (aluout == 4'b0000) begin
-            zero <= 1'b1;
-        end else begin
+        if (src-srcb) begin
             zero <= 1'b0;
+        end else begin
+            zero <= 1'b1;
         end
 
     endcase
