@@ -31,7 +31,7 @@ module tb_computer;
   logic firstTest, secondTest;
 
   // instantiate the CPU as the device to be tested
-  computer dut(clk, reset, writedata, dataadr, memwrite);
+  computer dut(.clk(clk), .reset(reset), .writedata(writedata), .dataadr(dataadr), .memwrite(memwrite));
   // generate clock to sequence tests
   // always
   //   begin
@@ -46,7 +46,7 @@ module tb_computer;
     firstTest = 1'b0;
     secondTest = 1'b0;
     $dumpfile("tb_computer.vcd");
-    $dumpvars(0,dut1,clk,reset,writedata,dataadr,memwrite);
+    $dumpvars(0,dut,dut1,clk,reset,writedata,dataadr,memwrite);
     $monitor("t=%t\t0x%7h\t%7d\t%8d",$realtime,writedata,dataadr,memwrite);
     // $dumpvars(0,clk,a,b,ctrl,result,zero,negative,carryOut,overflow);
     // $display("Ctl Z  N  O  C  A                    B                    ALUresult");
