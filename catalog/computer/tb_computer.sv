@@ -27,11 +27,12 @@ module tb_computer;
   logic memwrite;
   logic [31:0] writedata;
   logic [31:0] dataadr;
+  logic [31:0] pc;
 
   logic firstTest, secondTest;
 
   // instantiate the CPU as the device to be tested
-  computer dut(.clk(clk), .reset(reset), .writedata(writedata), .dataadr(dataadr), .memwrite(memwrite));
+  computer dut(.clk(clk), .reset(reset), .writedata(writedata), .dataadr(dataadr), .memwrite(memwrite), .pc(pc));
   // generate clock to sequence tests
   // always
   //   begin
@@ -63,6 +64,7 @@ module tb_computer;
   always @(posedge clk)
   begin
       $display("+");
+      $display("\t+pc = 0x%8h",pc);
       $display("\t+instr = 0x%8h",dut.instr);
       $display("\t+op = 0b%6b",dut.mips.c.op);
       $display("\t+controls = 0b%9b",dut.mips.c.md.controls);

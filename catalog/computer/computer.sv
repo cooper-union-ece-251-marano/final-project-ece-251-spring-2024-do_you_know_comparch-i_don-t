@@ -26,12 +26,13 @@ module computer
     //
     input  logic           clk, reset, 
     output logic [(n-1):0] writedata, dataadr, 
-    output logic           memwrite
+    output logic           memwrite,
+    output logic [31:0] pc
 );
     //
     // ---------------- MODULE DESIGN IMPLEMENTATION ----------------
     //
-    logic [31:0] pc, instr, readdata;
+    logic [31:0] instr, readdata;
 
     // computer internal components
 
