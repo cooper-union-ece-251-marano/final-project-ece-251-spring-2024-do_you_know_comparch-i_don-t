@@ -38,7 +38,7 @@ module datapath
     input  logic [(n-1):0] instr,
     output logic [(n-1):0] aluout, writedata,
     input  logic [(n-1):0] readdata
-);
+    );
     //
     // ---------------- MODULE DESIGN IMPLEMENTATION ----------------
     //

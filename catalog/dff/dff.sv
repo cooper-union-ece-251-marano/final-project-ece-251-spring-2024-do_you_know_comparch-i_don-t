@@ -23,7 +23,7 @@ module dff
     input  logic CLOCK, RESET,
     input  logic [(n-1):0] D,
     output logic [(n-1):0] Q
-);
+    );
     //
     // ---------------- MODULE DESIGN IMPLEMENTATION ----------------
     //

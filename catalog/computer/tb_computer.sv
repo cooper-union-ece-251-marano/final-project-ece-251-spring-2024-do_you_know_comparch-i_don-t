@@ -69,8 +69,8 @@ module tb_computer;
       $display("\t+funct = 0b%6b",dut.mips.c.ad.funct);
       $display("\t+aluop = 0b%2b",dut.mips.c.ad.aluop);
       $display("\t+alucontrol = 0b%3b",dut.mips.c.ad.alucontrol);
-      $display("\t+alu result = 0x%8h",dut.mips.dp.alu.result);
-      $display("\t+HiLo = 0x%8h",dut.mips.dp.alu.HiLo);
+      // $display("\t+alu result = 0x%8h",dut.mips.dp.alu.result);
+      // $display("\t+HiLo = 0x%8h",dut.mips.dp.alu.HiLo);
       $display("\t+$v0 = 0x%4h",dut.mips.dp.rf.rf[2]);
       $display("\t+$v1 = 0x%4h",dut.mips.dp.rf.rf[3]);
       $display("\t+$a0 = 0x%4h",dut.mips.dp.rf.rf[4]);
@@ -98,8 +98,8 @@ module tb_computer;
     $display("\t-funct = 0b%6b",dut.mips.c.ad.funct);
     $display("\t-aluop = 0b%2b",dut.mips.c.ad.aluop);
     $display("\t-alucontrol = 0b%3b",dut.mips.c.ad.alucontrol);
-    $display("\t-alu result = 0x%8h",dut.mips.dp.alu.result);
-    $display("\t-HiLo = 0x%8h",dut.mips.dp.alu.HiLo);
+    // $display("\t-alu result = 0x%8h",dut.mips.dp.alu.result);
+    // $display("\t-HiLo = 0x%8h",dut.mips.dp.alu.HiLo);
     $display("\t-$v0 = 0x%4h",dut.mips.dp.rf.rf[2]);
     $display("\t-$v1 = 0x%4h",dut.mips.dp.rf.rf[3]);
     $display("\t-$a0 = 0x%4h",dut.mips.dp.rf.rf[4]);
@@ -120,19 +120,19 @@ module tb_computer;
   always @(negedge clk, posedge clk) begin
     // check results
     // TODO: You need to update the checks below
-    // if (dut.dmem.RAM[84] === 32'h9504)
+    // if (dut.dmem.RAM[12] === 32'h9504)
     //   begin
-    //     $display("Successfully wrote 0x%4h at RAM[%3d]",84,32'h9504);
+    //     $display("Successfully wrote 0x%4h at RAM[%3d]",12,32'h9504);
     //     firstTest = 1'b1;
     //   end
 
-    if (dut.dmem.RAM[84] === 32'h96)
+    if (dut.dmem.RAM[12] === 32'h96)
       begin
-        $display("Successfully wrote 0x%4h at RAM[%3d]",84,32'h0096);
+        $display("Successfully wrote 0x%4h at RAM[%3d]",12,32'h0096);
         firstTest = 1'b1;
       end
     if(memwrite) begin
-      if(dataadr === 84 & writedata === 32'h96)
+      if(dataadr === 12 & writedata === 32'h96)
       begin
         $display("Successfully wrote 0x%4h at RAM[%3d]",writedata,dataadr);
         firstTest = 1'b1;
