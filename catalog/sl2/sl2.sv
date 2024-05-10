@@ -26,7 +26,9 @@ module sl2
     //
     // ---------------- MODULE DESIGN IMPLEMENTATION ----------------
     //
-    assign Y = {A[(n-3):0], 2'b00};
+    always @* begin
+        Y <= {A[(n-3):0], 2'b00};
+    end
 endmodule
 
 `endif // SL2

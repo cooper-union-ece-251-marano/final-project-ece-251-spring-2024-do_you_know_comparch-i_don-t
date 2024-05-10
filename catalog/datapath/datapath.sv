@@ -43,10 +43,10 @@ module datapath
     // ---------------- MODULE DESIGN IMPLEMENTATION ----------------
     //
     logic [4:0]  writereg;
-    logic [(n-1):0] pcnext, pcnextbr, pcplus4, pcbranch;
-    logic [(n-1):0] signimm, signimmsh;
-    logic [(n-1):0] srca, srcb;
-    logic [(n-1):0] result;
+    logic [31:0] pcnext, pcnextbr, pcplus4, pcbranch;
+    logic [31:0] signimm, signimmsh;
+    logic [31:0] srca, srcb;
+    logic [31:0] result;
 
     // "next PC" logic
     dff #(n)    pcreg(clk, reset, pcnext, pc);

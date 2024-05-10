@@ -17,8 +17,8 @@
 
 module adder
     #(parameter n = 32)(
-    input logic [(n-1):0] a
-    input logic [(n-1):0] b
+    input logic [(n-1):0] a,
+    input logic [(n-1):0] b,
     output logic [(n-1):0] addrlt
 
 );
@@ -28,7 +28,7 @@ module adder
 
 always @* begin
 
-addrlt <= a + b
+addrlt <= a + b;
 
 end
 

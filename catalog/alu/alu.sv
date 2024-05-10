@@ -22,7 +22,7 @@ module alu
     input logic [(n-1):0] srcb,
     input logic [3:0] alucontrol,
     output logic [(n-1):0] aluout,
-    output logic zero,
+    output logic zero
     
 );
 
@@ -64,7 +64,7 @@ always @* begin
         aluout <= srca | srcb;
         end
 
-        if (aluout==0)begin
+        if (aluout == 4'b0000) begin
             zero <= 1'b1;
         end else begin
             zero <= 1'b0;
