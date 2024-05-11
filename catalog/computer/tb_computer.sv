@@ -27,11 +27,12 @@ module tb_computer;
   logic memwrite;
   logic [31:0] writedata;
   logic [31:0] dataadr;
+  logic [31:0] pc;
 
   logic firstTest, secondTest;
 
   // instantiate the CPU as the device to be tested
-  computer dut(clk, reset, writedata, dataadr, memwrite);
+  computer dut(.clk(clk), .reset(reset), .writedata(writedata), .dataadr(dataadr), .memwrite(memwrite), .pc(pc));
   // generate clock to sequence tests
   // always
   //   begin
@@ -46,7 +47,7 @@ module tb_computer;
     firstTest = 1'b0;
     secondTest = 1'b0;
     $dumpfile("tb_computer.vcd");
-    $dumpvars(0,dut1,clk,reset,writedata,dataadr,memwrite);
+    $dumpvars(0,dut,dut1,dut.mips,clk,reset,writedata,dataadr,memwrite);
     $monitor("t=%t\t0x%7h\t%7d\t%8d",$realtime,writedata,dataadr,memwrite);
     // $dumpvars(0,clk,a,b,ctrl,result,zero,negative,carryOut,overflow);
     // $display("Ctl Z  N  O  C  A                    B                    ALUresult");
@@ -56,21 +57,27 @@ module tb_computer;
   // initialize test
   initial begin
     #0 clk_enable <= 0; #50 reset <= 1; # 50; reset <= 0; #50 clk_enable <= 1;
-    #100 $finish;
+    #250 $finish;
   end
 
   // monitor what happens at posedge of clock transition
   always @(posedge clk)
   begin
       $display("+");
+      $display("\t+pc = 0x%8h",pc);
       $display("\t+instr = 0x%8h",dut.instr);
       $display("\t+op = 0b%6b",dut.mips.c.op);
       $display("\t+controls = 0b%9b",dut.mips.c.md.controls);
       $display("\t+funct = 0b%6b",dut.mips.c.ad.funct);
       $display("\t+aluop = 0b%2b",dut.mips.c.ad.aluop);
       $display("\t+alucontrol = 0b%3b",dut.mips.c.ad.alucontrol);
-      $display("\t+alu result = 0x%8h",dut.mips.dp.alu.result);
-      $display("\t+HiLo = 0x%8h",dut.mips.dp.alu.HiLo);
+      $display("\t+pcsrc = 0b%3b",dut.mips.c.pcsrc);
+      $display("\t+zero = 0b%3b",dut.mips.c.zero);
+      $display("\t+branch = 0b%3b",dut.mips.c.branch);
+      // $display("\t+pcbranch = 0b%3b",dut.mips.dp.pcadd2.addrlt);
+      // $display("\t+pcnextbr = 0b%3b",dut.mips.dp.pcbrmux.Y);
+      // $display("\t+alu result = 0x%8h",dut.mips.dp.alu.result);
+      // $display("\t+HiLo = 0x%8h",dut.mips.dp.alu.HiLo);
       $display("\t+$v0 = 0x%4h",dut.mips.dp.rf.rf[2]);
       $display("\t+$v1 = 0x%4h",dut.mips.dp.rf.rf[3]);
       $display("\t+$a0 = 0x%4h",dut.mips.dp.rf.rf[4]);
@@ -98,8 +105,13 @@ module tb_computer;
     $display("\t-funct = 0b%6b",dut.mips.c.ad.funct);
     $display("\t-aluop = 0b%2b",dut.mips.c.ad.aluop);
     $display("\t-alucontrol = 0b%3b",dut.mips.c.ad.alucontrol);
-    $display("\t-alu result = 0x%8h",dut.mips.dp.alu.result);
-    $display("\t-HiLo = 0x%8h",dut.mips.dp.alu.HiLo);
+    $display("\t+pcsrc = 0b%3b",dut.mips.c.pcsrc);
+    $display("\t+zero = 0b%3b",dut.mips.c.zero);
+    $display("\t+branch = 0b%3b",dut.mips.c.branch);
+    // $display("\t+pcbranch = 0b%3b",dut.mips.dp.pcadd2.addrlt);
+    // $display("\t+pcnextbr = 0b%3b",dut.mips.dp.pcbrmux.Y);
+    // $display("\t-alu result = 0x%8h",dut.mips.dp.alu.result);
+    // $display("\t-HiLo = 0x%8h",dut.mips.dp.alu.HiLo);
     $display("\t-$v0 = 0x%4h",dut.mips.dp.rf.rf[2]);
     $display("\t-$v1 = 0x%4h",dut.mips.dp.rf.rf[3]);
     $display("\t-$a0 = 0x%4h",dut.mips.dp.rf.rf[4]);
@@ -120,19 +132,19 @@ module tb_computer;
   always @(negedge clk, posedge clk) begin
     // check results
     // TODO: You need to update the checks below
-    // if (dut.dmem.RAM[84] === 32'h9504)
+    // if (dut.dmem.RAM[12] === 32'h9504)
     //   begin
-    //     $display("Successfully wrote 0x%4h at RAM[%3d]",84,32'h9504);
+    //     $display("Successfully wrote 0x%4h at RAM[%3d]",12,32'h9504);
     //     firstTest = 1'b1;
     //   end
 
-    if (dut.dmem.RAM[84] === 32'h96)
+    if (dut.dmem.RAM[12] === 32'h96)
       begin
-        $display("Successfully wrote 0x%4h at RAM[%3d]",84,32'h0096);
+        $display("Successfully wrote 0x%4h at RAM[%3d]",12,32'h0096);
         firstTest = 1'b1;
       end
     if(memwrite) begin
-      if(dataadr === 84 & writedata === 32'h96)
+      if(dataadr === 12 & writedata === 32'h96)
       begin
         $display("Successfully wrote 0x%4h at RAM[%3d]",writedata,dataadr);
         firstTest = 1'b1;
