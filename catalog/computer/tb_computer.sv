@@ -57,7 +57,7 @@ module tb_computer;
   // initialize test
   initial begin
     #0 clk_enable <= 0; #50 reset <= 1; # 50; reset <= 0; #50 clk_enable <= 1;
-    #100 $finish;
+    #200 $finish;
   end
 
   // monitor what happens at posedge of clock transition
@@ -71,6 +71,11 @@ module tb_computer;
       $display("\t+funct = 0b%6b",dut.mips.c.ad.funct);
       $display("\t+aluop = 0b%2b",dut.mips.c.ad.aluop);
       $display("\t+alucontrol = 0b%3b",dut.mips.c.ad.alucontrol);
+      $display("\t+pcsrc = 0b%3b",dut.mips.c.pcsrc);
+      $display("\t+zero = 0b%3b",dut.mips.c.zero);
+      $display("\t+branch = 0b%3b",dut.mips.c.branch);
+      $display("\t+pcbranch = 0b%3b",dut.mips.dp.pcadd2.addrlt);
+      $display("\t+pcnextbr = 0b%3b",dut.mips.dp.pcbrmux.Y);
       // $display("\t+alu result = 0x%8h",dut.mips.dp.alu.result);
       // $display("\t+HiLo = 0x%8h",dut.mips.dp.alu.HiLo);
       $display("\t+$v0 = 0x%4h",dut.mips.dp.rf.rf[2]);
@@ -100,6 +105,11 @@ module tb_computer;
     $display("\t-funct = 0b%6b",dut.mips.c.ad.funct);
     $display("\t-aluop = 0b%2b",dut.mips.c.ad.aluop);
     $display("\t-alucontrol = 0b%3b",dut.mips.c.ad.alucontrol);
+    $display("\t+pcsrc = 0b%3b",dut.mips.c.pcsrc);
+    $display("\t+zero = 0b%3b",dut.mips.c.zero);
+    $display("\t+branch = 0b%3b",dut.mips.c.branch);
+    $display("\t+pcbranch = 0b%3b",dut.mips.dp.pcadd2.addrlt);
+    $display("\t+pcnextbr = 0b%3b",dut.mips.dp.pcbrmux.Y);
     // $display("\t-alu result = 0x%8h",dut.mips.dp.alu.result);
     // $display("\t-HiLo = 0x%8h",dut.mips.dp.alu.HiLo);
     $display("\t-$v0 = 0x%4h",dut.mips.dp.rf.rf[2]);

@@ -42,7 +42,7 @@ module controller
     // CPU's ALU decoder
     aludec  ad(funct, aluop, alucontrol);
 
-  assign pcsrc = branch & zero;
+    assign pcsrc = branch & zero;
 
 endmodule
 
