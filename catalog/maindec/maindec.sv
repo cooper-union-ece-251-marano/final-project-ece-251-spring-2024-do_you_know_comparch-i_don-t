@@ -43,7 +43,7 @@ module maindec
             4'b0010: controls <= 11'b10100000001; // subi
             4'b0100: controls <= 11'b10100100100; // LW
             4'b0101: controls <= 11'b10101000101; // SW
-            4'b1000: controls <= 11'b00010001000; // beg
+            4'b1000: controls <= 11'b00010001000; // beq
             4'b1001: controls <= 11'b00000011001; // JUMP
             default:   controls <= 11'bxxxxxxxxxxx; // illegal operation
         endcase
