@@ -7,7 +7,7 @@
 # Overall design
 ![alt text](images/Design.png)
 
-This design use a program counter to determine which instruction to fetch from the instruction memory. Based ont eh instruction, the main decoder or the control would set certain values different variable which would in turn set up the computer to perform that instruction. The variable information are send over the datapath. Based on the type of instruction it is, different components of the computers are in use. There are 3 types of instruction, arithmetic, immediate and jump types. After each instruction, the program counter would be incremented by 4 to point at the next instruction, with the exception of jump instructions. The main component of the computer are the registers which would be used for calculation, the alu doing the calculations, and the data memory storing the data.
+This design use a program counter to determine which instruction to fetch from the instruction memory. Based on the instruction, the main decoder or the control would set certain values different variable which would in turn set up the computer to perform that instruction. The variable information are send over the datapath. Based on the type of instruction it is, different components of the computers are in use. There are 3 types of instruction, arithmetic, immediate and jump types. After each instruction, the program counter would be incremented by 4 to point at the next instruction, with the exception of jump instructions. The main component of the computer are the registers which would be used for calculation, the alu doing the calculations, and the data memory storing the data.
 
 # Timing diagrams
 note: the timing diagrams are pulled from sample codes that were ran. The outputs of the code are appended on the bottom. 
@@ -28,7 +28,7 @@ J - type timing
 Mem - type timing
 ![alt text](images/Mem-type_timing.png)
 
-In order to run a given code on this design, the code much be writing in machine language in file within the /catalog/computer folder. The code should be written in hex. each line of instruction should following the format outlined in the ISA above.
+In order to run a given code on this design, the code must be writing in machine language in file within the /catalog/computer folder. The code should be written in hex. each line of instruction should following the format outlined in the ISA above.
 Within the catalog/imem/imem.sv file, the file name must be replaced with the new file name. 
 To run the program, one must be in the catalog/computer folder.
 Running the following command compiles the program
