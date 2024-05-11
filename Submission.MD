@@ -56,8 +56,9 @@ Note: if one wishes to calculate a higher number, increase the running time of t
 ![alt text](images/funct.png)
 
 
-# outputs of sample codes 
+# Outputs of Sample codes 
 Note: the machine language of all code used could be found in a _exe file in the computer folder. The conversion between assembly to machine could be found in sample_notes
+
 ![alt text](images/R_code.png)
 ![alt text](images/J_code.png)
 ![alt text](images/Mem_code.png)
